@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camping Adventure Vocabulary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f0fdf4;
+        }
+        h1 {
+            font-family: 'Fredoka One', cursive;
+        }
+        .vocab-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        .vocab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .icon-bg {
+            background-image: radial-gradient(circle, #ffffff 0%, #f0fdf4 100%);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border-4 border-green-500">
+        <!-- Header Section -->
+        <div class="bg-green-500 p-6 text-center text-white relative">
+            <div class="absolute top-2 left-4 text-4xl opacity-50">⛺</div>
+            <div class="absolute bottom-2 right-4 text-4xl opacity-50">🌲</div>
+            <h1 class="text-3xl md:text-5xl mb-2 tracking-wide uppercase">My Camping Adventure</h1>
+            <p class="text-lg md:text-xl font-medium opacity-90">What do we need to bring for a great trip?</p>
+        </div>
+
+        <!-- Vocabulary Grid -->
+        <div class="p-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6" id="vocabGrid">
+            <!-- Items will be injected here -->
+        </div>
+
+        <!-- Fun Challenge Footer -->
+        <div class="bg-orange-100 p-6 border-t-2 border-orange-200">
+            <h2 class="text-orange-700 font-bold text-xl mb-3 flex items-center">
+                <span class="mr-2">🎒</span> Camping Challenge!
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 text-orange-800">
+                <div class="bg-white p-3 rounded-xl border border-orange-300">
+                    <strong>Match the pair:</strong> Which item goes with the <strong>stove</strong>? 
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-orange-300">
+                    <strong>Story time:</strong> Pick 3 items and tell a friend why they are important for sleeping in the woods!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const vocabulary = [
+            { id: 1, word: "cutlery", icon: "🍴", color: "bg-blue-100", border: "border-blue-300", desc: "Knife, fork, and spoon." },
+            { id: 2, word: "a can opener", icon: "🥫", color: "bg-red-100", border: "border-red-300", desc: "To open your yummy food!" },
+            { id: 3, word: "a plate", icon: "🍽️", color: "bg-yellow-100", border: "border-yellow-300", desc: "Put your dinner here." },
+            { id: 4, word: "a vacuum flask", icon: "🧉", color: "bg-purple-100", border: "border-purple-300", desc: "Keeps drinks hot or cold." },
+            { id: 5, word: "a cooking pot", icon: "🍲", color: "bg-gray-100", border: "border-gray-300", desc: "To make hot soup or stew." },
+            { id: 6, word: "a stove", icon: "🔥", color: "bg-orange-100", border: "border-orange-300", desc: "Our outdoor kitchen." },
+            { id: 7, word: "fuel", icon: "⛽", color: "bg-sky-100", border: "border-sky-300", desc: "Power for our stove!" },
+            { id: 8, word: "a lighter", icon: "🧨", color: "bg-pink-100", border: "border-pink-300", desc: "To start the fire safely." },
+            { id: 9, word: "a torch", icon: "🔦", color: "bg-amber-100", border: "border-amber-300", desc: "To see in the dark night." },
+            { id: 10, word: "a sleeping bag", icon: "🛌", color: "bg-indigo-100", border: "border-indigo-300", desc: "Snuggly and warm bed." },
+            { id: 11, word: "an insect repellent", icon: "🦟", color: "bg-lime-100", border: "border-lime-300", desc: "Go away, mosquitoes!" },
+            { id: 12, word: "a first aid kit", icon: "🩹", color: "bg-rose-100", border: "border-rose-300", desc: "To help with small bumps." }
+        ];
+
+        const grid = document.getElementById('vocabGrid');
+
+        vocabulary.forEach(item => {
+            const card = document.createElement('div');
+            card.className = `vocab-card ${item.color} border-2 ${item.border} rounded-2xl p-4 flex flex-col items-center text-center shadow-sm`;
+            
+            card.innerHTML = `
+                <div class="text-xs font-bold text-gray-400 self-start mb-1">#${item.id}</div>
+                <div class="text-5xl mb-3 icon-bg p-4 rounded-full">${item.icon}</div>
+                <h3 class="text-lg font-bold text-gray-800 capitalize mb-1">${item.word}</h3>
+                <p class="text-xs text-gray-600 italic leading-tight">${item.desc}</p>
+            `;
+
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
